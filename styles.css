@@ -61,36 +61,83 @@ html {
   margin-top: 36px;
 }
 
-.gameGrid {
+.cell {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   width: 100%;
-
+  position: relative;
   font-size: 90px;
   background-color: white;
+  border: 2px solid black;
 }
 
-.gameGrid:hover {
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-top: none;
+}
+
+.cell:last-child,
+.cell:nth-child(7),
+.cell:nth-child(8) {
+  border-bottom: none;
+}
+
+.cell:nth-child(3n + 1) {
+  border-left: none;
+}
+
+.cell:nth-child(3n + 3) {
+  border-right: none;
+}
+
+.cell:hover {
   cursor: pointer;
-  filter: brightness(95%);
+  filter: brightness(90%);
 }
 
-.x {
-  width: 90px;
+.cell.x:hover,
+.cell.o:hover {
+  cursor: default;
+  filter: brightness(100%);
 }
 
-.o {
-  width: 75px;
+.x::before,
+.x::after {
+  content: "";
+  width: 12%;
+  height: 80%;
+  background-color: black;
+  position: absolute;
 }
 
-.bottomBorder {
-  border-bottom: 5px solid black;
+.x::before {
+  transform: rotate(45deg);
 }
 
-.rightBorder {
-  border-right: 5px solid black;
+.x::after {
+  transform: rotate(-45deg);
+}
+
+.o::before,
+.o::after {
+  content: "";
+  border-radius: 50%;
+  position: absolute;
+}
+
+.o::before {
+  width: 80%;
+  height: 80%;
+  background-color: black;
+}
+
+.o::after {
+  width: 60%;
+  height: 60%;
+  background-color: white;
 }
 
 /* --------- Footer --------- */
@@ -133,13 +180,5 @@ html {
   .gameBoard {
     grid-template-columns: repeat(3, 150px);
     grid-template-rows: repeat(3, 150px);
-  }
-
-  .x {
-    width: 120px;
-  }
-
-  .o {
-    width: 95px;
   }
 }
