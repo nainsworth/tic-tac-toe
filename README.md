@@ -10,4 +10,4 @@ This is to test my knowledge on JavaScript using modular patterns and factory fu
 - JavaScript
 
 ## Live Post
-[Tic Tac Toe Live Web Link](https://nainsworth.github.io/library/)
+[Tic Tac Toe Live Web Link](https://nainsworth.github.io/tic-tac-toe/)
