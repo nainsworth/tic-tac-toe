@@ -3,6 +3,7 @@
   margin: 0;
   box-sizing: border-box;
   font-family: Roboto, Helvetica, Sans-Serif;
+  /* border: 1px solid red; */
 }
 
 html {
@@ -19,9 +20,77 @@ html {
 
 /* --------- Header --------- */
 
+.header {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 32px;
+}
+
 /* --------- Game Board --------- */
 
+.card {
+  box-shadow: 0 0 8px 8px rgba(128, 128, 128, 0.489);
+  border-radius: 16px;
+  width: 90%;
+  margin: auto;
+  padding: 36px 0;
+  background-color: white;
+}
+
+.selection {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 36px;
+}
+
+.selection > select {
+  width: 125px;
+  font-size: 16px;
+  padding: 2px;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid black;
+}
+
 .gameBoard {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  justify-content: center;
+
+  margin-top: 36px;
+}
+
+.gameGrid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+
+  font-size: 90px;
+  background-color: white;
+}
+
+.gameGrid:hover {
+  cursor: pointer;
+  filter: brightness(95%);
+}
+
+.x {
+  width: 90px;
+}
+
+.o {
+  width: 75px;
+}
+
+.bottomBorder {
+  border-bottom: 5px solid black;
+}
+
+.rightBorder {
+  border-right: 5px solid black;
 }
 
 /* --------- Footer --------- */
@@ -44,4 +113,33 @@ html {
 
 .github {
   width: 40px;
+}
+
+@media screen and (min-width: 525px) {
+  .selection {
+    padding: 0 75px;
+  }
+
+  .selection > select {
+    font-weight: bold;
+    font-size: 20px;
+    width: 150px;
+  }
+
+  .card {
+    max-width: 600px;
+  }
+
+  .gameBoard {
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: repeat(3, 150px);
+  }
+
+  .x {
+    width: 120px;
+  }
+
+  .o {
+    width: 95px;
+  }
 }

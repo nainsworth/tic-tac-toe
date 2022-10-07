@@ -7,14 +7,62 @@
     <title>Tik Tac Toe</title>
     <!-- Links -->
     <link rel="stylesheet" href="./styles.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="./img/fav.png" type="image/x-icon">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="./img/fav.png" type="image/x-icon" />
     <script src="./script.js" defer></script>
   </head>
   <body>
     <div class="flex-container">
-      <div class="header"></div>
-      <div class="gameBoard"></div>
+      <div class="header">
+        <h1>Tic-Tac-Toe</h1>
+      </div>
+      <div class="card">
+        <div class="selection">
+          <select class="difficulty" name="levels" id="levels">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+            <option value="impossible">Impossible</option>
+          </select>
+
+          <select class="opponent" name="opponent" id="opponent">
+            <option value="computer">Computer</option>
+            <option value="person">Person</option>
+          </select>
+        </div>
+        <div class="gameBoard">
+          <div class="gameGrid bottomBorder rightBorder">
+            <img class="x" src="./img/close.svg" alt="X" />
+          </div>
+          <div class="gameGrid bottomBorder rightBorder">
+            <img class="o" src="./img/circle.svg" alt="O" />
+          </div>
+          <div class="gameGrid bottomBorder">
+            <img class="o" src="./img/circle.svg" alt="O" />
+          </div>
+          <div class="gameGrid bottomBorder rightBorder">
+            <img class="x" src="./img/close.svg" alt="X" />
+          </div>
+          <div class="gameGrid bottomBorder rightBorder">
+            <img class="x" src="./img/close.svg" alt="X" />
+          </div>
+          <div class="gameGrid bottomBorder">
+            <img class="o" src="./img/circle.svg" alt="O" />
+          </div>
+          <div class="gameGrid rightBorder">
+            <img class="o" src="./img/circle.svg" alt="O" />
+          </div>
+          <div class="gameGrid rightBorder">
+            <img class="o" src="./img/circle.svg" alt="O" />
+          </div>
+          <div class="gameGrid">
+            <img class="x" src="./img/close.svg" alt="X" />
+          </div>
+        </div>
+      </div>
       <div class="footer">
         <a
           href="https://www.github.com/nainsworth"
