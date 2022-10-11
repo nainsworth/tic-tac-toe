@@ -15,18 +15,22 @@ const Gameboard = (() => {
     const chooseOpponent = () => {
       const opponent = document.querySelector("[data-opponent]");
     };
+
+    // Create Game
+    const createGame = (difficulty, opponent) => {};
   })();
 
   // Game Play Object
-  const playGame = (() => {
-    let opponentTurn;
+  const Game = (() => {
+    let opponentTurn = false;
 
     // Choose Cell
-    const selectCell = () => {
+    const playGame = () => {
       const gameCell = document.querySelectorAll("[data-cell]");
       gameCell.forEach((cell) => {
         cell.addEventListener("click", handleClick, { once: true });
       });
+      return { gameCell };
     };
 
     // Handle Game Clicks
@@ -34,6 +38,10 @@ const Gameboard = (() => {
       const cell = e.target;
       const currentTurn = opponentTurn ? "o" : "x";
       placeMark(cell, currentTurn);
+      switchTurns();
+      if (controller.checkWins(currentTurn)) {
+        console.log(`${currentTurn} is the winner`);
+      }
     };
 
     // Place Mark
@@ -42,24 +50,43 @@ const Gameboard = (() => {
     };
 
     // Switch Turns
-    const switchTurns = () => {};
+    const switchTurns = () => {
+      opponentTurn = !opponentTurn;
+    };
 
-    return { selectCell };
+    playGame();
+
+    return { playGame };
   })();
 
-  // displayController
-  const displayController = (() => {
+  // controller
+  const controller = (() => {
     // Check for Wins
-    const checkWins = () => {};
+    const checkWins = (currentTurn) => {
+      const winningPatterns = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+      ];
+
+      return winningPatterns.some((combination) => {
+        return combination.every((index) => {
+          return Game.playGame.gameCell[index].classList.contains(currentTurn);
+        });
+      });
+    };
 
     // Check for Draws
     const checkDraw = () => {};
 
     // Display Game Results
     const displayResults = () => {};
+
+    return { checkWins };
   })();
-
-  return { playGame };
 })();
-
-Gameboard.playGame.selectCell();
