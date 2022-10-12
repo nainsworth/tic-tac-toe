@@ -1,91 +1,93 @@
-// --------------------- DOMS ----------------------
-const gameCell = document.querySelectorAll("[data-cell]");
-const modal = document.querySelector(".modal");
-const results = document.querySelector(".gameResults");
-const newGameBtn = document.querySelector(".newGame");
+const TicTacToe = (() => {
+  // --------------------- DOMS ----------------------
+  const gameCell = document.querySelectorAll("[data-cell]");
+  const modal = document.querySelector(".modal");
+  const results = document.querySelector(".gameResults");
+  const newGameBtn = document.querySelector(".newGame");
 
-let opponentTurn;
+  let opponentTurn;
 
-//---------- Choose Cell ----------
-function playGame() {
-  gameCell.forEach((cell) => {
-    opponentTurn = false;
-    cell.classList.remove("x");
-    cell.classList.remove("o");
-    cell.addEventListener("click", handleClick, { once: true });
-  });
-}
-
-//---------- Handle Game Clicks ----------
-function handleClick(e) {
-  const cell = e.target;
-  const currentTurn = opponentTurn ? "o" : "x";
-  placeMark(cell, currentTurn);
-  switchTurns();
-  if (checkWin(currentTurn)) {
-    displayResults(opponentTurn, false);
-  } else if (checkDraw()) {
-    displayResults(opponentTurn, true);
-  }
-}
-
-//---------- Place Mark ----------
-function placeMark(cell, currentTurn) {
-  cell.classList.add(currentTurn);
-}
-
-//---------- Switch Turns ----------
-function switchTurns() {
-  opponentTurn = !opponentTurn;
-}
-
-//---------- Check for Wins ----------
-const winningPatterns = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6],
-];
-
-function checkWin(currentTurn) {
-  return winningPatterns.some((combo) => {
-    return combo.every((index) => {
-      return gameCell[index].classList.contains(currentTurn);
+  //---------- Choose Cell ----------
+  const playGame = () => {
+    gameCell.forEach((cell) => {
+      opponentTurn = false;
+      cell.classList.remove("x");
+      cell.classList.remove("o");
+      cell.addEventListener("click", handleClick, { once: true });
     });
-  });
-}
+  };
 
-//---------- Check for Draws ----------
-function checkDraw() {
-  return [...gameCell].every((cell) => {
-    return cell.classList.contains("x") || cell.classList.contains("o");
-  });
-}
+  //---------- Handle Game Clicks ----------
+  const handleClick = (e) => {
+    const cell = e.target;
+    const currentTurn = opponentTurn ? "o" : "x";
+    placeMark(cell, currentTurn);
+    switchTurns();
+    if (checkWin(currentTurn)) {
+      displayResults(opponentTurn, false);
+    } else if (checkDraw()) {
+      displayResults(opponentTurn, true);
+    }
+  };
 
-//---------- Display Game Results ----------
-function displayResults(opponentTurn, draw) {
-  modal.classList.add("active");
+  //---------- Place Mark ----------
+  const placeMark = (cell, currentTurn) => {
+    cell.classList.add(currentTurn);
+  };
 
-  if (!draw) {
-    results.innerText = `PLAYER ${opponentTurn ? "X" : "O"} WINS!`;
-  } else {
-    results.innerText = `DRAW!`;
-  }
-}
+  //---------- Switch Turns ----------
+  const switchTurns = () => {
+    opponentTurn = !opponentTurn;
+  };
 
-//---------- Reset Game ----------
-function resetGame() {
+  //---------- Check for Wins ----------
+  const winningPatterns = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+
+  const checkWin = (currentTurn) => {
+    return winningPatterns.some((combo) => {
+      return combo.every((index) => {
+        return gameCell[index].classList.contains(currentTurn);
+      });
+    });
+  };
+
+  //---------- Check for Draws ----------
+  const checkDraw = () => {
+    return [...gameCell].every((cell) => {
+      return cell.classList.contains("x") || cell.classList.contains("o");
+    });
+  };
+
+  //---------- Display Game Results ----------
+  const displayResults = (opponentTurn, draw) => {
+    modal.classList.add("active");
+
+    if (!draw) {
+      results.innerText = `PLAYER ${opponentTurn ? "X" : "O"} WINS!`;
+    } else {
+      results.innerText = `DRAW!`;
+    }
+  };
+
+  //---------- Reset Game ----------
+  const resetGame = () => {
+    playGame();
+    modal.classList.remove("active");
+  };
+
+  newGameBtn.addEventListener("click", resetGame);
+
   playGame();
-  modal.classList.remove("active");
-}
-
-newGameBtn.addEventListener("click", resetGame);
-
-playGame();
+})();
 
 //---------- Player Object ----------
 //   const player = (name, mark, turn) => {
@@ -106,7 +108,6 @@ playGame();
 //     //---------- Create Game ----------
 //     const createGame = (difficulty, opponent) => {};
 //   })();
-
 
 // You’re going to store the gameboard as an array inside of a Gameboard object, so start there! Your players are also going to be stored in objects… and you’re probably going to want an object to control the flow of the game itself.
 
