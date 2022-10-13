@@ -1,8 +1,8 @@
 # tic-tac-toe
 
-This is a Tic Tac Tow project with [The Odin Project](https://www.theodinproject.com)
+This is a Tic Tac Toe project with [The Odin Project](https://www.theodinproject.com)
 
-This is to test my knowledge on JavaScript using modular patterns and factory functions
+This is to test my knowledge on JavaScript using factory functions to build a tic tac toe game
 
 ## Technologies Used
 - HTML
