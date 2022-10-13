@@ -20,19 +20,7 @@
         <h1>Tic-Tac-Toe</h1>
       </div>
       <div class="card">
-        <div class="selection">
-          <select class="difficulty" name="levels" id="levels" data-difficulty>
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-            <option value="impossible">Impossible</option>
-          </select>
-
-          <select class="opponent" name="opponent" id="opponent" data-opponent>
-            <option value="computer">Computer</option>
-            <option value="person">Person</option>
-          </select>
-        </div>
+        <div class="playerTurn" data-turn></div>
         <div class="gameBoard">
           <div class="cell" data-cell></div>
           <div class="cell" data-cell></div>
@@ -55,7 +43,6 @@
           NAINSWORTH
         </a>
       </div>
-
       <div class="modal">
         <div class="gameResults">PLAYER X WINS!</div>
         <button class="newGame">NEW GAME</button>
